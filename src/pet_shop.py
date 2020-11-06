@@ -63,4 +63,8 @@ def remove_pet_by_name (pet_shop, pet_name):
 #   - To add a pet to a pet shop stock
 def add_pet_to_stock(pet_shop, pet):
     pet_shop["pets"].append(pet)
-    
+
+# The purpose of the function:
+#   - To return customer cash
+def get_customer_cash(customer):
+    return customer["cash"]
