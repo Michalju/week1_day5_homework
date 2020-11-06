@@ -51,9 +51,7 @@ def find_pet_by_name(pet_shop, pet_name):
 # The purpose of the function:
 #   - To remove a pet with a given name from a pet shop
 def remove_pet_by_name(pet_shop, pet_name):
-    pet = find_pet_by_name(pet_shop, pet_name)
-    if pet:
-        pet_shop["pets"].remove(pet)
+    pet_shop["pets"].remove(find_pet_by_name(pet_shop, pet_name))
 
 # The purpose of the function:
 #   - To add a pet to a pet shop stock
