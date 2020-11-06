@@ -17,7 +17,7 @@ def add_or_remove_cash(pet_shop, cash):
     pet_shop["admin"]["total_cash"] +=  cash
 
 # The purpose of the function:
-#   - To check how many pets were sold in a given pet shop
+#   - To return how many pets were sold in a given pet shop
 def get_pets_sold (pet_shop):
     return pet_shop["admin"]["pets_sold"]
 
@@ -25,3 +25,8 @@ def get_pets_sold (pet_shop):
 #   - To increase number of pets sold for a given pet shop
 def increase_pets_sold (pet_shop, pets):
     pet_shop["admin"]["pets_sold"] += pets 
+
+# The purpose of the function:
+#   - To return number of pets in given pet shop
+def get_stock_count(pet_shop):
+    return len(pet_shop["pets"])
