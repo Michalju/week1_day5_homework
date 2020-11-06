@@ -29,7 +29,6 @@ def increase_pets_sold(pet_shop, pets):
 def get_stock_count(pet_shop):
     return len(pet_shop["pets"])
 
-
 # The purpose of the function:
 #   - To return list with pets of a given breed from a pet shop
 def get_pets_by_breed(pet_shop, breed_name):
@@ -52,10 +51,11 @@ def find_pet_by_name(pet_shop, pet_name):
 # The purpose of the function:
 #   - To remove a pet with a given name from a pet shop
 def remove_pet_by_name(pet_shop, pet_name):
-    for pet in pet_shop["pets"]:
-        if pet["name"] == pet_name:
-            pet_shop["pets"].remove(pet)
-            break
+    pet = find_pet_by_name(pet_shop, pet_name)
+    if pet:
+        pet_shop["pets"].remove(pet)
+    else:
+        return None
 
 # The purpose of the function:
 #   - To add a pet to a pet shop stock
@@ -89,3 +89,27 @@ def customer_can_afford_pet(customer, new_pet):
         return True
     else:
         return False
+
+# The purpose of the function:
+#   - To handle selling a pet to customer
+def sell_pet_to_customer(pet_shop, pet, customer):
+    
+    # Check if pet exists. If not then return
+    if not pet:
+        return None 
+    elif not find_pet_by_name(pet_shop, pet["name"]):      
+        return None         
+    
+    # Check if customer can afford the pet. If not
+    # then return
+    if not customer_can_afford_pet(customer, pet):
+        return None
+
+    # Move cash from customer to shop
+    remove_customer_cash(customer, pet["price"])
+    add_or_remove_cash(pet_shop, pet["price"])
+    
+    # Move pet from pet shop to customer
+    remove_pet_by_name(pet_shop, pet["name"])
+    add_pet_to_customer(customer, pet)
+    increase_pets_sold(pet_shop, 1)
