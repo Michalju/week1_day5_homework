@@ -58,3 +58,9 @@ def remove_pet_by_name (pet_shop, pet_name):
         if pet["name"] == pet_name:
             pet_shop["pets"].remove(pet)
             break
+
+# The purpose of the function:
+#   - To add a pet to a pet shop stock
+def add_pet_to_stock(pet_shop, pet):
+    pet_shop["pets"].append(pet)
+    
