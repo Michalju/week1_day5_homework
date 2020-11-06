@@ -50,3 +50,11 @@ def find_pet_by_name (pet_shop, pet_name):
             break
     return pet_found
     
+# The purpose of the function:
+#   - To remove a pet with a given name from a pet shop
+def remove_pet_by_name (pet_shop, pet_name):
+   
+    for pet in pet_shop["pets"]:
+        if pet["name"] == pet_name:
+            pet_shop["pets"].remove(pet)
+            break
