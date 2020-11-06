@@ -31,9 +31,22 @@ def increase_pets_sold (pet_shop, pets):
 def get_stock_count(pet_shop):
     return len(pet_shop["pets"])
 
+# The purpose of the function:
+#   - To return list with pets of a given breed from a pet shop
 def get_pets_by_breed(pet_shop, breed_name):
     pets_number = []
     for pet in pet_shop["pets"]:
         if pet["breed"] == breed_name:
             pets_number.append(pet)
     return pets_number
+
+# The purpose of the function:
+#   - To return a pet of a given name from a pet shop
+def find_pet_by_name (pet_shop, pet_name):
+    pet_found = None
+    for pet in pet_shop["pets"]:
+        if pet["name"] == pet_name:
+            pet_found = pet
+            break
+    return pet_found
+    
