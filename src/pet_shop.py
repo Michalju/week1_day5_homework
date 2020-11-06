@@ -76,3 +76,8 @@ def remove_customer_cash(customer, cash):
 #   - To count pets of a given customer
 def get_customer_pet_count (customer):
     return len(customer["pets"])
+
+# The purpose of the function:
+#   - To add a pet to a given customer
+def add_pet_to_customer(customer, new_pet):
+    customer["pets"].append(new_pet)
