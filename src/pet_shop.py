@@ -81,3 +81,11 @@ def get_customer_pet_count (customer):
 #   - To add a pet to a given customer
 def add_pet_to_customer(customer, new_pet):
     customer["pets"].append(new_pet)
+
+# The purpose of the function:
+#   - To check if customer can afford a pet
+def customer_can_afford_pet(customer, new_pet):
+    if customer["cash"] >= new_pet["price"]:
+        return True
+    else:
+        return False
