@@ -41,12 +41,9 @@ def get_pets_by_breed(pet_shop, breed_name):
 # The purpose of the function:
 #   - To return a pet of a given name from a pet shop
 def find_pet_by_name(pet_shop, pet_name):
-    pet_found = None
     for pet in pet_shop["pets"]:
         if pet["name"] == pet_name:
-            pet_found = pet
-            break
-    return pet_found
+            return pet
 
 # The purpose of the function:
 #   - To remove a pet with a given name from a pet shop
@@ -81,31 +78,19 @@ def add_pet_to_customer(customer, new_pet):
 # The purpose of the function:
 #   - To check if customer can afford a pet
 def customer_can_afford_pet(customer, new_pet):
-    if customer["cash"] >= new_pet["price"]:
-        return True
-    else:
-        return False
+    return customer["cash"] >= new_pet["price"]
 
 # The purpose of the function:
 #   - To handle selling a pet to customer
 def sell_pet_to_customer(pet_shop, pet, customer):
     
     # Check if pet exists. If not then return
-    if not pet:
-        return None 
-    elif not find_pet_by_name(pet_shop, pet["name"]):      
-        return None         
-    
-    # Check if customer can afford the pet. If not
-    # then return
-    if not customer_can_afford_pet(customer, pet):
-        return None
-
-    # Move cash from customer to shop
-    remove_customer_cash(customer, pet["price"])
-    add_or_remove_cash(pet_shop, pet["price"])
-    
-    # Move pet from pet shop to customer
-    remove_pet_by_name(pet_shop, pet["name"])
-    add_pet_to_customer(customer, pet)
-    increase_pets_sold(pet_shop, 1)
+    if pet and customer_can_afford_pet(customer, pet):
+        # Move cash from customer to shop
+        remove_customer_cash(customer, pet["price"])
+        add_or_remove_cash(pet_shop, pet["price"])
+        
+        # Move pet from pet shop to customer
+        remove_pet_by_name(pet_shop, pet["name"])
+        add_pet_to_customer(customer, pet)
+        increase_pets_sold(pet_shop, 1)
